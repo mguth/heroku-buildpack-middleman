@@ -74,7 +74,7 @@ class LanguagePack::Middleman < LanguagePack::Rack
     log("build_static_files") do
       topic("Building #{name} site")
       require 'benchmark'
-      time = Benchmark.realtime { pipe("env PATH=$PATH:bin bundle exec #{build_files_command} --debug 2>&1") }
+      time = Benchmark.realtime { pipe("env PATH=$PATH:bin bundle exec #{build_files_command} 2>&1") }
       if $?.success?
         puts "#{name} build completed (#{"%.2f" % time}s)"
       else
